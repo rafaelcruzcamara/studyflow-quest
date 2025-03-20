@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -214,9 +213,9 @@ const Dashboard: React.FC = () => {
                         </div>
                       </div>
                       <div className="mt-3 pt-3 border-t text-center">
-                        <a href="#" className="text-sm text-primary font-medium">
+                        <Link to="/study" className="text-sm text-primary font-medium">
                           Ver recurso
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   ))}
