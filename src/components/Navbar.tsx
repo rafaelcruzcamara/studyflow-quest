@@ -1,144 +1,133 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Menu, X } from 'lucide-react';
+import { BookOpen, LayoutDashboard, User, Menu, X, Search, Globe, BookOpenCheck } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useMediaQuery } from '@/hooks/use-mobile';
 
 const Navbar: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const location = useLocation();
-
-  const navLinks = [
-    { name: 'Início', path: '/' },
-    { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Perfil', path: '/profile' },
+  
+  const navigation = [
+    { name: 'Início', href: '/' },
+    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Cursos', href: '/courses' },
+    { name: 'Estudar', href: '/study' },
+    { name: 'Perfil', href: '/profile' },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location.pathname]);
-
-  const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
-
+  
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/80 backdrop-blur-lg shadow-sm py-3' 
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="container px-4 mx-auto flex items-center justify-between">
-        <Link 
-          to="/" 
-          className="text-2xl font-display font-bold text-primary animate-fade-in"
-        >
-          StudyFlow
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <ul className="flex items-center space-x-8">
-            {navLinks.map((link, index) => (
-              <li 
-                key={link.path}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <Link 
-                  to={link.path} 
-                  className={`subtle-underline px-1 py-2 text-sm font-medium transition-colors ${
-                    location.pathname === link.path 
-                      ? 'text-primary after:w-full' 
-                      : 'text-foreground/80 hover:text-foreground'
-                  }`}
+    <header className="fixed w-full bg-background/80 backdrop-blur-md z-50 border-b border-border/40">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center space-x-2">
+              <BookOpen className="h-6 w-6 text-primary" />
+              <span className="text-xl font-bold font-display">StudyFlow</span>
+            </Link>
+          </div>
+          
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-center space-x-4">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                    location.pathname === item.href 
+                      ? "bg-primary/10 text-primary"
+                      : "text-foreground hover:bg-accent hover:text-accent-foreground"
+                  )}
                 >
-                  {link.name}
+                  {item.name}
                 </Link>
-              </li>
-            ))}
-            <li className="animate-fade-in" style={{ animationDelay: '300ms' }}>
-              <Button 
-                asChild 
-                variant="default" 
-                size="sm" 
-                className="bg-primary font-medium shadow-sm hover:shadow-md transition-all"
-              >
-                <Link to="/dashboard">Começar</Link>
-              </Button>
-            </li>
-          </ul>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden flex items-center" 
-          onClick={toggleMenu}
-          aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
-        >
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6 text-foreground" />
-          ) : (
-            <Menu className="h-6 w-6 text-foreground" />
-          )}
-        </button>
+              ))}
+            </div>
+          </div>
+          
+          <div className="hidden md:block">
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <Search className="h-4 w-4 text-muted-foreground" />
+                </div>
+                <input 
+                  type="text" 
+                  placeholder="Pesquisar..." 
+                  className="pl-10 pr-4 py-2 text-sm bg-secondary/50 rounded-full border border-border/50 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/50 w-full max-w-xs"
+                />
+              </div>
+              
+              <div className="flex space-x-2">
+                <Button variant="ghost" size="icon" className="text-muted-foreground">
+                  <Globe className="h-5 w-5" />
+                </Button>
+                <Button variant="ghost" size="icon" className="text-muted-foreground relative">
+                  <BookOpenCheck className="h-5 w-5" />
+                  <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-primary"></span>
+                </Button>
+              </div>
+              
+              <Link to="/profile">
+                <Button variant="ghost" size="icon" className="rounded-full">
+                  <div className="h-8 w-8 rounded-full bg-gradient-to-br from-primary/80 to-primary flex items-center justify-center text-white text-sm font-medium">
+                    J
+                  </div>
+                </Button>
+              </Link>
+            </div>
+          </div>
+          
+          <div className="md:hidden">
+            <Button variant="ghost" size="icon" onClick={toggleMenu}>
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
+        </div>
       </div>
-
-      {/* Mobile Menu */}
-      <div 
-        className={`md:hidden absolute w-full bg-white/95 backdrop-blur-lg shadow-lg transition-all duration-300 ease-in-out ${
-          mobileMenuOpen 
-            ? 'opacity-100 translate-y-0 visible' 
-            : 'opacity-0 -translate-y-4 invisible'
-        }`}
-      >
-        <nav className="container px-4 py-5">
-          <ul className="flex flex-col space-y-4">
-            {navLinks.map((link, index) => (
-              <li key={link.path}>
-                <Link 
-                  to={link.path} 
-                  className={`block px-2 py-2 text-base font-medium ${
-                    location.pathname === link.path 
-                      ? 'text-primary' 
-                      : 'text-foreground/80'
-                  }`}
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Button 
-                asChild 
-                variant="default" 
-                size="default" 
-                className="w-full bg-primary font-medium"
-              >
-                <Link to="/dashboard">Começar</Link>
-              </Button>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      
+      {/* Mobile menu */}
+      {isMenuOpen && isMobile && (
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 md:hidden bg-background animate-fadeIn border-t border-border/40">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              className={cn(
+                "block px-3 py-2 rounded-md text-base font-medium",
+                location.pathname === item.href 
+                  ? "bg-primary/10 text-primary"
+                  : "text-foreground hover:bg-accent hover:text-accent-foreground"
+              )}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
+          
+          <div className="pt-4 pb-3 border-t border-border/40">
+            <div className="flex items-center px-3">
+              <div className="flex-shrink-0">
+                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary/80 to-primary flex items-center justify-center text-white text-sm font-medium">
+                  J
+                </div>
+              </div>
+              <div className="ml-3">
+                <div className="text-base font-medium">João Silva</div>
+                <div className="text-sm text-muted-foreground">joao.silva@example.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
