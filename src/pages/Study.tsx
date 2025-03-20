@@ -12,7 +12,7 @@ import { Slider } from "@/components/ui/slider";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
-// Expanded data structure with educational grade level filtering
+// Educational content organized by academic level, grade, and subject
 const studyMaterials = {
   fundamental: {
     '1': [
@@ -22,7 +22,7 @@ const studyMaterials = {
         materials: [
           { id: 1, type: 'reading', title: 'Aprendendo a Somar e Subtrair', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 2, type: 'video', title: 'Vídeo: Números e Operações', icon: <Video className="h-5 w-5" />, completed: false, 
-            src: "https://www.youtube.com/embed/SnBKlm-Qn2E", 
+            src: "https://www.youtube.com/embed/0OmTlT4rrE4", 
             description: "Este vídeo ensina os conceitos básicos de adição e subtração para crianças, usando exemplos visuais e divertidos." },
           { id: 3, type: 'exercises', title: 'Exercícios de Adição e Subtração', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
         ]
@@ -33,13 +33,64 @@ const studyMaterials = {
         materials: [
           { id: 4, type: 'reading', title: 'Vogais e Consoantes', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 5, type: 'video', title: 'Vídeo: Alfabeto Completo', icon: <Video className="h-5 w-5" />, completed: false, 
-            src: "https://www.youtube.com/embed/hzmcUTWym6A", 
+            src: "https://www.youtube.com/embed/V8hHU-0mNQ8", 
             description: "Aula completa sobre o alfabeto, com pronúncia e exemplos de palavras para cada letra." },
           { id: 6, type: 'exercises', title: 'Atividades de Alfabetização', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
         ]
       }
     ],
-    // Additional grades can be added similarly
+    '2': [
+      {
+        subject: 'Matemática',
+        topic: 'Multiplicação e Divisão',
+        materials: [
+          { id: 7, type: 'reading', title: 'Entendendo a Multiplicação', icon: <FileText className="h-5 w-5" />, completed: false },
+          { id: 8, type: 'video', title: 'Vídeo: Aprendendo a Multiplicar', icon: <Video className="h-5 w-5" />, completed: false, 
+            src: "https://www.youtube.com/embed/oF-29kGcwqc", 
+            description: "Aula sobre multiplicação para crianças do 2º ano do ensino fundamental." },
+          { id: 9, type: 'exercises', title: 'Exercícios de Multiplicação', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
+        ]
+      }
+    ],
+    '3': [
+      {
+        subject: 'Ciências',
+        topic: 'O Corpo Humano',
+        materials: [
+          { id: 10, type: 'reading', title: 'Conhecendo o Corpo Humano', icon: <FileText className="h-5 w-5" />, completed: false },
+          { id: 11, type: 'video', title: 'Vídeo: Os Sistemas do Corpo', icon: <Video className="h-5 w-5" />, completed: false, 
+            src: "https://www.youtube.com/embed/yYAw79zXDYI", 
+            description: "Aula sobre os principais sistemas do corpo humano para crianças." },
+          { id: 12, type: 'exercises', title: 'Atividades sobre o Corpo Humano', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
+        ]
+      }
+    ],
+    '4': [
+      {
+        subject: 'Geografia',
+        topic: 'Regiões do Brasil',
+        materials: [
+          { id: 13, type: 'reading', title: 'Conhecendo as Regiões Brasileiras', icon: <FileText className="h-5 w-5" />, completed: false },
+          { id: 14, type: 'video', title: 'Vídeo: As 5 Regiões do Brasil', icon: <Video className="h-5 w-5" />, completed: false, 
+            src: "https://www.youtube.com/embed/HnN4nIWjxFE", 
+            description: "Aula detalhada sobre as cinco regiões do Brasil e suas características." },
+          { id: 15, type: 'exercises', title: 'Exercícios sobre Regiões do Brasil', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
+        ]
+      }
+    ],
+    '5': [
+      {
+        subject: 'História',
+        topic: 'Povos Indígenas do Brasil',
+        materials: [
+          { id: 16, type: 'reading', title: 'Os Primeiros Habitantes do Brasil', icon: <FileText className="h-5 w-5" />, completed: false },
+          { id: 17, type: 'video', title: 'Vídeo: Povos Indígenas Brasileiros', icon: <Video className="h-5 w-5" />, completed: false, 
+            src: "https://www.youtube.com/embed/wHzBCOwo6qA", 
+            description: "Aula sobre os principais povos indígenas que habitavam o Brasil antes da colonização." },
+          { id: 18, type: 'exercises', title: 'Atividades sobre Povos Indígenas', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
+        ]
+      }
+    ]
   },
   medio: {
     '1': [
@@ -60,13 +111,38 @@ const studyMaterials = {
         materials: [
           { id: 4, type: 'reading', title: 'Movimento Retilíneo Uniforme', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 5, type: 'video', title: 'Vídeo: Conceitos de Cinemática', icon: <Video className="h-5 w-5" />, completed: false, 
-            src: "https://www.youtube.com/embed/7K0ylbgQtV8", 
+            src: "https://www.youtube.com/embed/NPi_q4IoEtE", 
             description: "Aula completa sobre os princípios da cinemática, com exemplos práticos de movimento retilíneo uniforme e uniformemente variado." },
           { id: 6, type: 'exercises', title: 'Problemas de Cinemática', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
         ]
       }
     ],
-    // Additional grades can be added similarly
+    '2': [
+      {
+        subject: 'Química',
+        topic: 'Reações Químicas',
+        materials: [
+          { id: 7, type: 'reading', title: 'Princípios das Reações Químicas', icon: <FileText className="h-5 w-5" />, completed: false },
+          { id: 8, type: 'video', title: 'Vídeo: Balanceamento de Equações', icon: <Video className="h-5 w-5" />, completed: false, 
+            src: "https://www.youtube.com/embed/eNmapILUgH4", 
+            description: "Aula sobre como balancear equações químicas e os diferentes tipos de reações." },
+          { id: 9, type: 'exercises', title: 'Exercícios sobre Reações Químicas', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
+        ]
+      }
+    ],
+    '3': [
+      {
+        subject: 'Biologia',
+        topic: 'Genética',
+        materials: [
+          { id: 10, type: 'reading', title: 'Leis de Mendel', icon: <FileText className="h-5 w-5" />, completed: false },
+          { id: 11, type: 'video', title: 'Vídeo: Genética Básica', icon: <Video className="h-5 w-5" />, completed: false, 
+            src: "https://www.youtube.com/embed/ROKxHIZqnho", 
+            description: "Aula sobre as leis de Mendel e os princípios básicos da genética." },
+          { id: 12, type: 'exercises', title: 'Exercícios de Genética', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
+        ]
+      }
+    ]
   },
   superior: {
     '1': [
@@ -93,7 +169,32 @@ const studyMaterials = {
         ]
       }
     ],
-    // Additional grades can be added similarly
+    '2': [
+      {
+        subject: 'Física',
+        topic: 'Mecânica Quântica',
+        materials: [
+          { id: 7, type: 'reading', title: 'Introdução à Mecânica Quântica', icon: <FileText className="h-5 w-5" />, completed: false },
+          { id: 8, type: 'video', title: 'Vídeo: Fundamentos da Mecânica Quântica', icon: <Video className="h-5 w-5" />, completed: false, 
+            src: "https://www.youtube.com/embed/WIyTZDHuarQ", 
+            description: "Aula sobre os conceitos básicos da mecânica quântica e suas aplicações." },
+          { id: 9, type: 'exercises', title: 'Exercícios de Mecânica Quântica', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
+        ]
+      }
+    ],
+    '3': [
+      {
+        subject: 'Engenharia',
+        topic: 'Resistência dos Materiais',
+        materials: [
+          { id: 10, type: 'reading', title: 'Princípios de Resistência dos Materiais', icon: <FileText className="h-5 w-5" />, completed: false },
+          { id: 11, type: 'video', title: 'Vídeo: Tensão e Deformação', icon: <Video className="h-5 w-5" />, completed: false, 
+            src: "https://www.youtube.com/embed/PN13QMOpisw", 
+            description: "Aula sobre tensão, deformação e as propriedades mecânicas dos materiais." },
+          { id: 12, type: 'exercises', title: 'Exercícios de Resistência dos Materiais', icon: <BookOpenCheck className="h-5 w-5" />, completed: false },
+        ]
+      }
+    ]
   }
 };
 
@@ -109,6 +210,10 @@ const Study: React.FC = () => {
   const [availableSubjects, setAvailableSubjects] = useState<any[]>([]);
   const videoRef = useRef<HTMLIFrameElement>(null);
   const [currentSession, setCurrentSession] = useState<any>(null);
+  const [videoProgress, setVideoProgress] = useState(0);
+  const [volume, setVolume] = useState(70);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   
   // Get user's education level and grade from auth context
   const userLevel = user?.educationLevel || 'medio';  // Default to 'medio' if not set
@@ -179,6 +284,17 @@ const Study: React.FC = () => {
   };
 
   const markMaterialAsCompleted = (materialId: number) => {
+    if (!currentSession) return;
+    
+    const updatedMaterials = currentSession.materials.map((material: any) => 
+      material.id === materialId ? { ...material, completed: true } : material
+    );
+    
+    setCurrentSession({
+      ...currentSession,
+      materials: updatedMaterials
+    });
+    
     toast({
       title: "Material marcado como concluído",
       description: "Seu progresso foi atualizado!",
@@ -219,6 +335,37 @@ const Study: React.FC = () => {
     }
   };
 
+  const toggleVideoPlay = () => {
+    setIsPlaying(!isPlaying);
+    // In a real application, you would control the video playback here
+  };
+
+  const toggleVideoMute = () => {
+    setIsMuted(!isMuted);
+    // In a real application, you would control the video volume here
+  };
+
+  const handleVolumeChange = (value: number[]) => {
+    setVolume(value[0]);
+    // In a real application, you would set the video volume here
+  };
+
+  const increaseVideoProgress = () => {
+    // Simulating video progress for demonstration
+    setVideoProgress(prev => Math.min(prev + 10, 100));
+  };
+
+  useEffect(() => {
+    // Update video progress periodically for demonstration
+    const interval = setInterval(() => {
+      if (isPlaying && activeTab === 'conteudo') {
+        increaseVideoProgress();
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPlaying, activeTab]);
+
   const renderSelectedContent = () => {
     if (!currentSession) return null;
     
@@ -235,7 +382,7 @@ const Study: React.FC = () => {
             <p className="text-muted-foreground mb-4">{material.description}</p>
           )}
           
-          <div className="rounded-lg overflow-hidden bg-black aspect-video">
+          <div className="rounded-lg overflow-hidden bg-black aspect-video relative">
             <iframe 
               ref={videoRef}
               className="w-full h-full" 
@@ -244,6 +391,39 @@ const Study: React.FC = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
+            
+            {/* Custom video controls overlay - note: these don't control the YouTube video but are for UI demonstration */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 transition-opacity opacity-100 hover:opacity-100">
+              <div className="w-full mb-2">
+                <Progress value={videoProgress} className="h-1 bg-gray-600" />
+              </div>
+              <div className="flex items-center justify-between text-white">
+                <div className="flex items-center space-x-3">
+                  <button onClick={toggleVideoPlay} className="p-1 rounded-full hover:bg-white/20">
+                    {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+                  </button>
+                  <div className="flex items-center space-x-2">
+                    <button onClick={toggleVideoMute} className="p-1 rounded-full hover:bg-white/20">
+                      {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                    </button>
+                    <div className="w-20 hidden sm:block">
+                      <Slider
+                        value={[volume]}
+                        max={100}
+                        step={1}
+                        onValueChange={handleVolumeChange}
+                        className="h-1"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="text-xs opacity-90">
+                  {Math.floor(videoProgress / 100 * 10)}:
+                  {Math.floor((videoProgress / 100 * 10 * 60) % 60).toString().padStart(2, '0')} / 
+                  10:00
+                </div>
+              </div>
+            </div>
           </div>
           
           <div className="mt-4 space-y-4">
@@ -265,7 +445,11 @@ const Study: React.FC = () => {
           </div>
           
           <div className="flex justify-end">
-            <Button onClick={() => markMaterialAsCompleted(material.id)}>
+            <Button 
+              onClick={() => markMaterialAsCompleted(material.id)}
+              className="bg-green-600 hover:bg-green-700"
+            >
+              <CheckCircle className="mr-2 h-4 w-4" />
               Marcar como concluído
             </Button>
           </div>
@@ -297,19 +481,35 @@ const Study: React.FC = () => {
                 </ul>
               </div>
               
-              <h3 className="text-lg font-medium mt-6">Sistema de Coordenadas Cartesianas</h3>
-              <p>
-                O sistema de coordenadas cartesianas consiste em dois eixos perpendiculares:
-                o eixo horizontal (eixo x) e o eixo vertical (eixo y). Qualquer ponto no plano
-                pode ser localizado através de um par ordenado de números (x, y).
-              </p>
-              
-              <div className="p-4 bg-secondary/50 rounded-lg mt-4">
-                <h4 className="font-medium">Exemplo:</h4>
-                <p className="mt-2">
-                  O ponto A tem coordenadas (3, 4), significando que está localizado
-                  3 unidades à direita da origem no eixo x e 4 unidades acima no eixo y.
-                </p>
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 my-6">
+                <h3 className="text-lg font-medium mt-2 mb-4 text-primary">Sistema de Coordenadas Cartesianas</h3>
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="flex-1">
+                    <p>
+                      O sistema de coordenadas cartesianas consiste em dois eixos perpendiculares:
+                      o eixo horizontal (eixo x) e o eixo vertical (eixo y). Qualquer ponto no plano
+                      pode ser localizado através de um par ordenado de números (x, y).
+                    </p>
+                    
+                    <div className="p-4 bg-blue-50 rounded-lg mt-4 border border-blue-100">
+                      <h4 className="font-medium text-blue-800">Exemplo:</h4>
+                      <p className="mt-2">
+                        O ponto A tem coordenadas (3, 4), significando que está localizado
+                        3 unidades à direita da origem no eixo x e 4 unidades acima no eixo y.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-full md:w-1/3 flex items-center justify-center">
+                    <div className="relative w-48 h-48 border border-gray-300 rounded">
+                      <div className="absolute top-0 bottom-0 left-1/2 w-px bg-gray-300"></div>
+                      <div className="absolute left-0 right-0 top-1/2 h-px bg-gray-300"></div>
+                      <div className="absolute left-[calc(50%+3*8px)] top-[calc(50%-4*8px)] h-3 w-3 rounded-full bg-red-500"></div>
+                      <div className="absolute left-[calc(50%+3*8px+4px)] top-[calc(50%-4*8px-12px)] text-xs">A(3,4)</div>
+                      <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs">+x</div>
+                      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xs">+y</div>
+                    </div>
+                  </div>
+                </div>
               </div>
               
               <h3 className="text-lg font-medium mt-6">Distância entre dois pontos</h3>
@@ -318,22 +518,29 @@ const Study: React.FC = () => {
                 utilizamos a fórmula:
               </p>
               
-              <div className="p-4 bg-secondary/50 rounded-lg mt-2">
-                <h4 className="font-medium">Fórmula da distância:</h4>
-                <p className="font-mono bg-white/70 p-2 rounded mt-2 text-center">
+              <div className="p-4 bg-secondary/50 rounded-lg mt-2 flex flex-col items-center">
+                <h4 className="font-medium text-center">Fórmula da distância:</h4>
+                <div className="font-mono bg-white/70 p-3 rounded mt-2 text-center w-64">
                   d = √[(x₂ - x₁)² + (y₂ - y₁)²]
-                </p>
+                </div>
+                <div className="mt-4 w-full max-w-sm">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Distancia_entre_dois_pontos.svg/500px-Distancia_entre_dois_pontos.svg.png" 
+                    alt="Representação gráfica da distância entre dois pontos"
+                    className="w-full rounded-lg shadow-sm"
+                  />
+                </div>
               </div>
               
-              <div className="p-4 bg-primary/5 rounded-lg border border-primary/20 mt-4">
-                <h4 className="font-medium mb-2">Exemplo resolvido:</h4>
+              <div className="p-4 bg-green-50 rounded-lg border border-green-100 mt-4">
+                <h4 className="font-medium mb-2 text-green-800">Exemplo resolvido:</h4>
                 <p>Calcular a distância entre os pontos P(2, 3) e Q(5, 7):</p>
-                <p className="font-mono mt-2">
+                <div className="font-mono mt-2 p-3 bg-white rounded">
                   d = √[(5 - 2)² + (7 - 3)²]<br/>
                   d = √[9 + 16]<br/>
                   d = √25<br/>
                   d = 5
-                </p>
+                </div>
               </div>
               
               <h3 className="text-lg font-medium mt-6">Equação da Reta</h3>
@@ -342,20 +549,43 @@ const Study: React.FC = () => {
                 representar uma reta, como:
               </p>
               
-              <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li><strong>Forma reduzida:</strong> y = mx + n, onde m é o coeficiente angular (inclinação) e n é o coeficiente linear</li>
-                <li><strong>Equação segmentária:</strong> x/a + y/b = 1, onde a e b são os interceptos nos eixos x e y</li>
-                <li><strong>Equação paramétrica:</strong> x = x₀ + tv₁, y = y₀ + tv₂, onde (x₀, y₀) é um ponto da reta e v = (v₁, v₂) é um vetor diretor</li>
-              </ul>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                <div className="p-4 bg-purple-50 rounded-lg border border-purple-100">
+                  <h4 className="font-medium text-purple-800">Forma reduzida:</h4>
+                  <div className="font-mono bg-white/70 p-2 rounded mt-2 text-center">
+                    y = mx + n
+                  </div>
+                  <p className="mt-2 text-sm">
+                    Onde m é o coeficiente angular (inclinação) e n é o coeficiente linear
+                  </p>
+                </div>
+                
+                <div className="p-4 bg-amber-50 rounded-lg border border-amber-100">
+                  <h4 className="font-medium text-amber-800">Equação segmentária:</h4>
+                  <div className="font-mono bg-white/70 p-2 rounded mt-2 text-center">
+                    x/a + y/b = 1
+                  </div>
+                  <p className="mt-2 text-sm">
+                    Onde a e b são os interceptos nos eixos x e y
+                  </p>
+                </div>
+              </div>
               
               <div className="p-4 bg-secondary/50 rounded-lg mt-4">
                 <h4 className="font-medium">Coeficiente Angular (m):</h4>
-                <p className="font-mono bg-white/70 p-2 rounded mt-2 text-center">
+                <div className="font-mono bg-white/70 p-2 rounded mt-2 text-center">
                   m = (y₂ - y₁) / (x₂ - x₁)
-                </p>
+                </div>
                 <p className="mt-2 text-sm">
                   O coeficiente angular representa a inclinação da reta em relação ao eixo x.
                 </p>
+                <div className="mt-3 w-full flex justify-center">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Coefficient-directeur.svg/500px-Coefficient-directeur.svg.png" 
+                    alt="Coeficiente angular de uma reta"
+                    className="w-2/3 rounded-lg shadow-sm"
+                  />
+                </div>
               </div>
             </>
           )}
@@ -377,17 +607,27 @@ const Study: React.FC = () => {
                 </ul>
               </div>
               
-              <h3 className="text-lg font-medium mt-6">O Alfabeto</h3>
-              <p>
-                O alfabeto da língua portuguesa é composto por 26 letras:
-              </p>
-              
-              <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 mt-3">
-                {['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'].map((letter) => (
-                  <div key={letter} className="flex items-center justify-center h-10 rounded-md bg-secondary/50 font-bold">
-                    {letter}
-                  </div>
-                ))}
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 my-6">
+                <h3 className="text-lg font-medium mt-2 mb-4 text-primary">O Alfabeto</h3>
+                <p>
+                  O alfabeto da língua portuguesa é composto por 26 letras:
+                </p>
+                
+                <div className="mt-4 flex flex-wrap justify-center gap-2">
+                  {['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'].map((letter) => (
+                    <div key={letter} className="flex items-center justify-center w-12 h-12 rounded-md bg-blue-100 text-blue-800 font-bold text-xl hover:bg-blue-200 transition-colors cursor-pointer">
+                      {letter}
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-6 w-full flex justify-center">
+                  <img 
+                    src="https://cdn.pixabay.com/photo/2016/08/07/11/05/school-1576128_1280.jpg" 
+                    alt="Letras do alfabeto"
+                    className="w-2/3 rounded-lg shadow-sm"
+                  />
+                </div>
               </div>
               
               <h3 className="text-lg font-medium mt-6">Vogais e Consoantes</h3>
@@ -395,27 +635,49 @@ const Study: React.FC = () => {
                 As letras do alfabeto são divididas em vogais e consoantes:
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-                <div className="p-4 bg-blue-100/50 rounded-lg">
-                  <h4 className="font-medium text-blue-800 mb-2">Vogais</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
+                <div className="p-5 bg-blue-100/50 rounded-lg border border-blue-200">
+                  <h4 className="font-medium text-blue-800 mb-3">Vogais</h4>
                   <div className="flex justify-between">
                     {['A', 'E', 'I', 'O', 'U'].map((letter) => (
-                      <div key={letter} className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-200 font-bold text-blue-800">
+                      <div key={letter} className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-200 font-bold text-xl text-blue-800 hover:bg-blue-300 transition-colors cursor-pointer">
                         {letter}
                       </div>
                     ))}
                   </div>
-                  <p className="mt-3 text-sm">
+                  <p className="mt-4 text-blue-900">
                     Vogais são os sons produzidos sem obstrução da passagem de ar pela boca.
+                    Podem formar sílabas sozinhas.
                   </p>
+                  <div className="mt-3 p-2 bg-white rounded-lg">
+                    <h5 className="text-sm font-medium mb-1">Exemplos de palavras:</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {['Água', 'Ema', 'Ilha', 'Ovo', 'Uva'].map((word) => (
+                        <div key={word} className="px-3 py-1 rounded-full bg-blue-50 text-blue-800 text-sm">
+                          {word}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 
-                <div className="p-4 bg-green-100/50 rounded-lg">
-                  <h4 className="font-medium text-green-800 mb-2">Consoantes</h4>
-                  <p className="text-sm">
+                <div className="p-5 bg-green-100/50 rounded-lg border border-green-200">
+                  <h4 className="font-medium text-green-800 mb-3">Consoantes</h4>
+                  <p className="text-green-900">
                     As consoantes são todas as outras letras do alfabeto que não são vogais.
-                    Elas são produzidas com alguma obstrução da passagem de ar.
+                    Elas são produzidas com alguma obstrução da passagem de ar pela boca e
+                    geralmente precisam de vogais para formar sílabas.
                   </p>
+                  <div className="mt-3 p-2 bg-white rounded-lg">
+                    <h5 className="text-sm font-medium mb-1">Exemplos de consoantes:</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {['B', 'C', 'D', 'F', 'G', 'H', 'J', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'X', 'Z'].map((letter) => (
+                        <div key={letter} className="flex items-center justify-center w-8 h-8 rounded-md bg-green-200 font-bold text-green-800">
+                          {letter}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
               
@@ -425,21 +687,39 @@ const Study: React.FC = () => {
                 em português é formada por uma consoante seguida de uma vogal (CV).
               </p>
               
-              <div className="p-4 bg-secondary/50 rounded-lg mt-3">
-                <h4 className="font-medium mb-2">Exemplos de sílabas:</h4>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {['BA', 'BE', 'BI', 'BO', 'BU', 'CA', 'CE', 'CI', 'CO', 'CU', 'DA', 'DE', 'DI', 'DO', 'DU', 'FA'].map((syllable) => (
-                    <div key={syllable} className="flex items-center justify-center h-10 rounded-md bg-white/70 font-bold">
+              <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-100 mt-3">
+                <h4 className="font-medium mb-2 text-yellow-800">Exemplos de sílabas:</h4>
+                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                  {['BA', 'BE', 'BI', 'BO', 'BU', 'CA', 'CE', 'CI', 'CO', 'CU', 'DA', 'DE', 'DI', 'DO', 'DU', 'FA', 'FE', 'FI'].map((syllable) => (
+                    <div key={syllable} className="flex items-center justify-center h-10 rounded-md bg-yellow-200 font-bold text-yellow-800">
                       {syllable}
                     </div>
                   ))}
+                </div>
+                
+                <div className="mt-4 p-3 bg-white rounded-lg">
+                  <h5 className="text-sm font-medium mb-2">Experimente formar palavras com as sílabas:</h5>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {['BO', 'LA', 'CA', 'SA', 'ME', 'NI', 'NO', 'PA', 'TO'].map((syllable) => (
+                      <div key={syllable} className="px-2 py-1 bg-yellow-100 rounded cursor-pointer hover:bg-yellow-200 transition-colors">
+                        {syllable}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="p-2 border border-dashed border-yellow-300 rounded-lg text-center min-h-[40px]">
+                    Arraste as sílabas para formar palavras
+                  </div>
                 </div>
               </div>
             </>
           )}
           
           <div className="flex justify-end">
-            <Button onClick={() => markMaterialAsCompleted(material.id)}>
+            <Button 
+              onClick={() => markMaterialAsCompleted(material.id)}
+              className="bg-green-600 hover:bg-green-700"
+            >
+              <CheckCircle className="mr-2 h-4 w-4" />
               Marcar como concluído
             </Button>
           </div>
@@ -454,11 +734,11 @@ const Study: React.FC = () => {
     if (!currentSession) return null;
     
     return (
-      <div className="space-y-4">
+      <div className="space-y-4 animate-fade-in">
         <h2 className="text-xl font-semibold">Exercícios de {currentSession.topic}</h2>
         <div className="space-y-6">
           {[1, 2, 3].map((exerciseId) => (
-            <div key={exerciseId} className="p-4 border rounded-lg">
+            <div key={exerciseId} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <p className="font-medium">Exercício {exerciseId}:</p>
                 <span className="px-2 py-1 bg-secondary/70 text-xs rounded-full">
@@ -480,10 +760,18 @@ const Study: React.FC = () => {
                 {currentSession.subject === 'Física' && exerciseId === 3 && "Um móvel parte do repouso e atinge a velocidade de 108 km/h em 15 segundos. Determine a aceleração do móvel em m/s²."}
               </p>
               
+              <div className="mt-4 p-3 bg-secondary/20 rounded-lg">
+                <p className="text-sm text-muted-foreground">Tente resolver o exercício antes de ver a resposta.</p>
+                <textarea
+                  className="w-full mt-2 p-2 rounded border min-h-[80px] focus:ring-1 focus:ring-primary"
+                  placeholder="Digite sua resposta aqui..."
+                ></textarea>
+              </div>
+              
               {showAnswer[exerciseId] && (
-                <div className="mt-3 p-3 bg-secondary/30 rounded-lg">
-                  <p className="font-medium">Resposta:</p>
-                  <p>
+                <div className="mt-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                  <p className="font-medium text-green-800">Resposta:</p>
+                  <p className="mt-1 text-green-900">
                     {currentSession.subject === 'Matemática' && exerciseId === 1 && "d = √[(7-3)² + (9-4)²] = √[16 + 25] = √41 ≈ 6,40"}
                     {currentSession.subject === 'Matemática' && exerciseId === 2 && "Usando a fórmula (y - y₁) = m(x - x₁), onde m = (y₂ - y₁)/(x₂ - x₁) = (5-3)/(-1-2) = 2/(-3) = -2/3. Logo, (y - 3) = -2/3(x - 2), que resulta em y = -2x/3 + 11/3."}
                     {currentSession.subject === 'Matemática' && exerciseId === 3 && "Para verificar se os pontos são colineares, calculamos a inclinação entre A e B: (6-2)/(4-1) = 4/3, e entre B e C: (10-6)/(7-4) = 4/3. Como as inclinações são iguais, os pontos são colineares."}
@@ -507,7 +795,7 @@ const Study: React.FC = () => {
                 >
                   {showAnswer[exerciseId] ? "Ocultar resposta" : "Ver resposta"}
                 </Button>
-                <Button size="sm">
+                <Button size="sm" className="bg-primary/90 hover:bg-primary">
                   Enviar minha resposta
                 </Button>
               </div>
@@ -517,6 +805,32 @@ const Study: React.FC = () => {
       </div>
     );
   };
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Acesso Restrito</CardTitle>
+            <CardDescription>
+              Você precisa estar autenticado para acessar este conteúdo.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center">
+            <p className="mb-4 text-center">Faça login ou crie uma conta para continuar.</p>
+            <div className="flex gap-4">
+              <Button onClick={() => window.location.href = "/login"}>
+                Login
+              </Button>
+              <Button variant="outline" onClick={() => window.location.href = "/register"}>
+                Cadastrar
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -530,7 +844,7 @@ const Study: React.FC = () => {
               <div>
                 <div className="mb-4">
                   <Select value={selectedSubject || ''} onValueChange={handleSubjectChange}>
-                    <SelectTrigger className="w-full md:w-[200px]">
+                    <SelectTrigger className="w-full md:w-[250px]">
                       <SelectValue placeholder="Selecione a matéria" />
                     </SelectTrigger>
                     <SelectContent>
@@ -550,7 +864,7 @@ const Study: React.FC = () => {
                     </h1>
                     <p className="text-muted-foreground">
                       Conteúdo para {userLevel === 'fundamental' ? 'Ensino Fundamental' : 
-                                     userLevel === 'medio' ? 'Ensino Médio' : 'Ensino Superior'} - 
+                                    userLevel === 'medio' ? 'Ensino Médio' : 'Ensino Superior'} - 
                       {userLevel === 'superior' ? ` ${userGrade}º Período` : ` ${userGrade}º Ano`}
                     </p>
                   </>
@@ -558,7 +872,7 @@ const Study: React.FC = () => {
               </div>
               
               <div className="mt-4 md:mt-0">
-                <Card className="border-none bg-primary text-primary-foreground">
+                <Card className="border-none bg-gradient-to-r from-primary to-primary/80 text-primary-foreground">
                   <CardContent className="p-4 flex items-center space-x-4">
                     <div className="p-2 rounded-full bg-white/10">
                       <Clock className="h-5 w-5" />
@@ -595,22 +909,24 @@ const Study: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Sidebar com materiais */}
             <div className="lg:col-span-1">
-              <Card>
-                <CardHeader>
+              <Card className="hover:shadow-md transition-shadow">
+                <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-t-lg">
                   <CardTitle className="flex items-center text-lg">
                     <BookOpen className="h-5 w-5 mr-2 text-primary" />
                     Materiais de Estudo
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-4">
                   {currentSession ? (
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {currentSession.materials.map((material: any) => (
                         <div 
                           key={material.id} 
                           className={cn(
-                            "flex items-center p-3 rounded-lg border cursor-pointer transition-colors",
-                            selectedMaterial === material.id ? 'bg-secondary/70 border-primary/30' : 'hover:bg-secondary/50'
+                            "flex items-center p-3 rounded-lg border transition-all",
+                            selectedMaterial === material.id 
+                              ? 'bg-primary/10 border-primary/30 shadow-sm' 
+                              : 'hover:bg-secondary/50 cursor-pointer'
                           )}
                           onClick={() => handleSelectMaterial(material.id)}
                         >
@@ -637,32 +953,32 @@ const Study: React.FC = () => {
               
               {/* Progresso do Curso */}
               {currentSession && (
-                <Card className="mt-6">
-                  <CardHeader className="pb-2">
+                <Card className="mt-6 hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-2 bg-gradient-to-r from-secondary/10 to-primary/10 rounded-t-lg">
                     <CardTitle className="text-lg">Seu Progresso</CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="p-4">
                     <div className="space-y-4">
                       <div>
                         <div className="flex justify-between mb-1 text-sm">
                           <span>Progresso geral</span>
                           <span>20%</span>
                         </div>
-                        <Progress value={20} className="h-2" />
+                        <Progress value={20} className="h-2.5" />
                       </div>
                       
-                      <div className="p-3 bg-secondary/40 rounded-lg">
-                        <p className="text-sm font-medium mb-1">Estatísticas</p>
+                      <div className="p-4 bg-secondary/40 rounded-lg">
+                        <p className="text-sm font-medium mb-2">Estatísticas</p>
                         <div className="grid grid-cols-3 gap-2 text-center">
-                          <div>
+                          <div className="p-2 rounded-lg bg-secondary">
                             <p className="text-2xl font-bold">1</p>
                             <p className="text-xs text-muted-foreground">Concluídos</p>
                           </div>
-                          <div>
+                          <div className="p-2 rounded-lg bg-secondary">
                             <p className="text-2xl font-bold">2</p>
                             <p className="text-xs text-muted-foreground">Em andamento</p>
                           </div>
-                          <div>
+                          <div className="p-2 rounded-lg bg-secondary">
                             <p className="text-2xl font-bold">45</p>
                             <p className="text-xs text-muted-foreground">Minutos</p>
                           </div>
@@ -676,8 +992,8 @@ const Study: React.FC = () => {
             
             {/* Área de conteúdo principal */}
             <div className="lg:col-span-3">
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="hover:shadow-md transition-shadow">
+                <CardHeader className="pb-2 bg-gradient-to-r from-secondary/10 to-primary/10 rounded-t-lg">
                   <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                     <TabsList className="grid grid-cols-3">
                       <TabsTrigger value="conteudo">Conteúdo</TabsTrigger>
@@ -686,16 +1002,16 @@ const Study: React.FC = () => {
                     </TabsList>
                   </Tabs>
                 </CardHeader>
-                <CardContent>
-                  <div className="mt-4">
+                <CardContent className="p-6">
+                  <div className="animate-fade-in">
                     {activeTab === "conteudo" && renderSelectedContent()}
                     {activeTab === "exercicios" && renderExercises()}
                     {activeTab === "anotacoes" && (
-                      <div className="space-y-4">
+                      <div className="space-y-4 animate-fade-in">
                         <h2 className="text-xl font-semibold">Suas Anotações</h2>
-                        <div className="p-4 border rounded-lg min-h-[300px]">
+                        <div className="p-4 border rounded-lg min-h-[300px] shadow-inner bg-white/50">
                           <textarea 
-                            className="w-full h-full min-h-[250px] bg-transparent outline-none resize-none" 
+                            className="w-full h-full min-h-[250px] bg-transparent outline-none resize-none focus:ring-0 p-2"
                             placeholder="Digite suas anotações aqui..."
                           />
                         </div>

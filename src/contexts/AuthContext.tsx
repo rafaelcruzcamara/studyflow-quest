@@ -1,120 +1,120 @@
 
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from "@/components/ui/use-toast";
+import { toast } from '@/components/ui/use-toast';
 
-interface User {
+// Define the User type
+export type User = {
   id: string;
   name: string;
   email: string;
-  educationLevel: string;
+  educationLevel: 'fundamental' | 'medio' | 'superior';
   grade: string;
-}
+};
 
-interface AuthContextType {
+// Define the AuthContextType
+type AuthContextType = {
   user: User | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (userData: Omit<User, 'id'> & { password: string }) => Promise<void>;
+  login: (email: string, password: string) => void;
+  register: (userData: Omit<User, "id"> & { password: string }) => void;
   logout: () => void;
-}
+};
 
+// Create the Auth Context
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Auth Provider Component
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
+  // Check for existing user session on mount
   useEffect(() => {
-    // Check if user is stored in localStorage
-    const storedUser = localStorage.getItem('studyflow_user');
+    const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
       setIsAuthenticated(true);
     }
   }, []);
 
-  const login = async (email: string, password: string) => {
-    try {
-      // In a real app, this would be an API call
-      // Simulating login for demo purposes
-      const mockUsers = JSON.parse(localStorage.getItem('studyflow_users') || '[]');
-      const foundUser = mockUsers.find((u: any) => u.email === email && u.password === password);
-      
-      if (!foundUser) {
-        throw new Error('Credenciais inválidas. Por favor, tente novamente.');
-      }
-      
-      const { password: _, ...userWithoutPassword } = foundUser;
+  // Login function
+  const login = (email: string, password: string) => {
+    // Simulating authentication check
+    const storedUsers = localStorage.getItem('users');
+    const users = storedUsers ? JSON.parse(storedUsers) : [];
+    
+    const foundUser = users.find((u: any) => u.email === email && u.password === password);
+    
+    if (foundUser) {
+      // Remove password from user object before storing in state
+      const { password, ...userWithoutPassword } = foundUser;
       setUser(userWithoutPassword);
       setIsAuthenticated(true);
-      localStorage.setItem('studyflow_user', JSON.stringify(userWithoutPassword));
-      
+      localStorage.setItem('user', JSON.stringify(userWithoutPassword));
+      navigate('/dashboard');
       toast({
-        title: "Login realizado com sucesso",
+        title: "Login bem-sucedido",
         description: `Bem-vindo de volta, ${userWithoutPassword.name}!`,
       });
-      
-      navigate('/dashboard');
-    } catch (error) {
+    } else {
       toast({
-        title: "Erro de login",
-        description: error instanceof Error ? error.message : "Ocorreu um erro durante o login",
-        variant: "destructive"
+        variant: "destructive",
+        title: "Erro de autenticação",
+        description: "E-mail ou senha incorretos",
       });
     }
   };
 
-  const register = async (userData: Omit<User, 'id'> & { password: string }) => {
-    try {
-      // In a real app, this would be an API call
-      // Simulating registration for demo purposes
-      const mockUsers = JSON.parse(localStorage.getItem('studyflow_users') || '[]');
-      
-      // Check if email already exists
-      if (mockUsers.some((u: any) => u.email === userData.email)) {
-        throw new Error('Este email já está cadastrado.');
-      }
-      
-      const newUser = {
-        id: Date.now().toString(),
-        ...userData
-      };
-      
-      mockUsers.push(newUser);
-      localStorage.setItem('studyflow_users', JSON.stringify(mockUsers));
-      
-      // Auto login after registration
-      const { password: _, ...userWithoutPassword } = newUser;
-      setUser(userWithoutPassword);
-      setIsAuthenticated(true);
-      localStorage.setItem('studyflow_user', JSON.stringify(userWithoutPassword));
-      
+  // Register function
+  const register = (userData: Omit<User, "id"> & { password: string }) => {
+    // Simulating user registration
+    const storedUsers = localStorage.getItem('users');
+    const users = storedUsers ? JSON.parse(storedUsers) : [];
+    
+    // Check if user already exists
+    if (users.some((u: any) => u.email === userData.email)) {
       toast({
-        title: "Cadastro realizado com sucesso",
-        description: `Bem-vindo, ${userData.name}!`,
+        variant: "destructive",
+        title: "Erro no cadastro",
+        description: "Este e-mail já está em uso",
       });
-      
-      navigate('/dashboard');
-    } catch (error) {
-      toast({
-        title: "Erro de cadastro",
-        description: error instanceof Error ? error.message : "Ocorreu um erro durante o cadastro",
-        variant: "destructive"
-      });
+      return;
     }
+    
+    // Create new user with ID
+    const newUser = {
+      id: Date.now().toString(),
+      ...userData
+    };
+    
+    // Add to users array
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    
+    // Auto login after registration
+    const { password, ...userWithoutPassword } = newUser;
+    setUser(userWithoutPassword);
+    setIsAuthenticated(true);
+    localStorage.setItem('user', JSON.stringify(userWithoutPassword));
+    
+    navigate('/dashboard');
+    toast({
+      title: "Cadastro realizado com sucesso",
+      description: `Bem-vindo(a), ${userData.name}!`,
+    });
   };
 
+  // Logout function
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
-    localStorage.removeItem('studyflow_user');
-    navigate('/');
-    
+    localStorage.removeItem('user');
+    navigate('/login');
     toast({
       title: "Logout realizado",
-      description: "Você saiu da sua conta com sucesso."
+      description: "Você foi desconectado com sucesso",
     });
   };
 
@@ -125,6 +125,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 };
 
+// Custom hook for using Auth Context
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
