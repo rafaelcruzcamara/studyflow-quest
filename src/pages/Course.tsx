@@ -12,7 +12,8 @@ const Course: React.FC = () => {
       id: 1,
       title: "Matemática",
       description: "Aprenda conceitos fundamentais de matemática de forma clara e objetiva",
-      videoUrl: "https://www.youtube.com/embed/videoseries?list=PLAudUnJeNg4trL7IcV7pN4fiIrx7SBjL8", // Curso de Matemática Básica
+      videoUrl: "https://www.youtube.com/embed/videoseries?list=PLAudUnJeNg4trL7IcV7pN4fiIrx7SBjL8", // Matemática Básica
+      curriculum: "Base Nacional Comum Curricular (BNCC)",
       topics: [
         { id: 101, title: "Geometria Analítica", duration: 60, videos: 5, exercises: 12 },
         { id: 102, title: "Cálculo Diferencial", duration: 75, videos: 7, exercises: 15 },
@@ -24,6 +25,7 @@ const Course: React.FC = () => {
       title: "Física",
       description: "Estude os princípios que governam o universo de forma interativa",
       videoUrl: "https://www.youtube.com/embed/videoseries?list=PL1ELCTiItg0Nri25ONSYEjzqfQmcXFOi6", // Curso de Física
+      curriculum: "Parâmetros Curriculares Nacionais (PCN)",
       topics: [
         { id: 201, title: "Eletromagnetismo", duration: 45, videos: 4, exercises: 10 },
         { id: 202, title: "Mecânica Clássica", duration: 60, videos: 6, exercises: 12 },
@@ -34,6 +36,7 @@ const Course: React.FC = () => {
       title: "Química",
       description: "Explore os elementos e reações que compõem nosso mundo",
       videoUrl: "https://www.youtube.com/embed/videoseries?list=PLf1lowbdbFIAGzn9OQPD97Da9TOoZddOF", // Curso de Química
+      curriculum: "Base Nacional Comum Curricular (BNCC)",
       topics: [
         { id: 301, title: "Ligações Químicas", duration: 60, videos: 5, exercises: 8 },
         { id: 302, title: "Química Orgânica", duration: 90, videos: 9, exercises: 15 },
@@ -44,6 +47,7 @@ const Course: React.FC = () => {
       title: "Programação",
       description: "Aprenda a programar do zero ao avançado com cursos completos",
       videoUrl: "https://www.youtube.com/embed/videoseries?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n", // Curso de Python
+      curriculum: "Itinerários Formativos - Novo Ensino Médio",
       topics: [
         { id: 401, title: "Lógica de Programação", duration: 50, videos: 5, exercises: 10 },
         { id: 402, title: "Python Básico", duration: 80, videos: 8, exercises: 16 },
@@ -55,10 +59,35 @@ const Course: React.FC = () => {
       title: "Inglês",
       description: "Domine o idioma mais falado no mundo dos negócios",
       videoUrl: "https://www.youtube.com/embed/videoseries?list=PL41dMNqXopt85RhRgFp_jdoI5Bz7DUG-l", // Curso de Inglês
+      curriculum: "Base Nacional Comum Curricular (BNCC) - Línguas Estrangeiras",
       topics: [
         { id: 501, title: "Gramática Básica", duration: 40, videos: 4, exercises: 10 },
         { id: 502, title: "Conversação", duration: 60, videos: 6, exercises: 12 },
         { id: 503, title: "Business English", duration: 70, videos: 7, exercises: 14 },
+      ]
+    },
+    {
+      id: 6,
+      title: "História do Brasil",
+      description: "Entenda a formação histórica e cultural do Brasil",
+      videoUrl: "https://www.youtube.com/embed/videoseries?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      curriculum: "Base Nacional Comum Curricular (BNCC) - Ciências Humanas",
+      topics: [
+        { id: 601, title: "Brasil Colônia", duration: 55, videos: 5, exercises: 10 },
+        { id: 602, title: "Período Imperial", duration: 65, videos: 6, exercises: 12 },
+        { id: 603, title: "República Velha", duration: 70, videos: 7, exercises: 15 },
+      ]
+    },
+    {
+      id: 7,
+      title: "Geografia",
+      description: "Explore a geografia física e humana do Brasil e do mundo",
+      videoUrl: "https://www.youtube.com/embed/videoseries?list=PLnGI1S-odeaYjQTe0trBYzbCfkVKsINVQ",
+      curriculum: "Base Nacional Comum Curricular (BNCC) - Ciências Humanas",
+      topics: [
+        { id: 701, title: "Geografia do Brasil", duration: 60, videos: 6, exercises: 12 },
+        { id: 702, title: "Geopolítica Mundial", duration: 75, videos: 7, exercises: 14 },
+        { id: 703, title: "Meio Ambiente e Sustentabilidade", duration: 65, videos: 6, exercises: 10 },
       ]
     }
   ];
@@ -74,7 +103,8 @@ const Course: React.FC = () => {
               Cursos Disponíveis
             </h1>
             <p className="text-muted-foreground mb-8">
-              Explore nossos cursos completos com videoaulas, material de leitura e exercícios interativos
+              Explore nossos cursos completos alinhados com o currículo escolar brasileiro, 
+              com videoaulas, material de leitura e exercícios interativos
             </p>
             
             <div className="space-y-12">
@@ -88,6 +118,10 @@ const Course: React.FC = () => {
                           {course.title}
                         </h2>
                         <p className="text-muted-foreground mb-4">{course.description}</p>
+                        
+                        <div className="bg-secondary/20 p-2 rounded-md inline-block mb-4">
+                          <span className="text-xs font-medium">Currículo: {course.curriculum}</span>
+                        </div>
                         
                         <div className="grid grid-cols-3 gap-4 mb-6">
                           <div className="bg-background/80 p-3 rounded-lg flex items-center">
