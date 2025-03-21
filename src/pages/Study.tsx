@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Clock, CheckCircle, FileText, Video, BookOpenCheck, ChevronDown, ChevronUp, Play, Pause, Volume2, VolumeX, SkipForward, SkipBack } from 'lucide-react';
+import { BookOpen, Clock, CheckCircle, FileText, Video, BookOpenCheck, ChevronDown, ChevronUp, Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, Lock, CheckSquare } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
 import { useAuth } from '@/contexts/AuthContext';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -19,6 +18,7 @@ const studyMaterials = {
       {
         subject: 'Matemática',
         topic: 'Adição e Subtração',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLAudUnJeNg4trL7IcV7pN4fiIrx7SBjL8",
         materials: [
           { id: 1, type: 'reading', title: 'Aprendendo a Somar e Subtrair', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 2, type: 'video', title: 'Vídeo: Números e Operações', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -30,6 +30,7 @@ const studyMaterials = {
       {
         subject: 'Português',
         topic: 'Alfabetização',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLnGI1S-odeaYMeIhEMhkGHQ0Fq0wKQSvy",
         materials: [
           { id: 4, type: 'reading', title: 'Vogais e Consoantes', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 5, type: 'video', title: 'Vídeo: Alfabeto Completo', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -43,6 +44,7 @@ const studyMaterials = {
       {
         subject: 'Matemática',
         topic: 'Multiplicação e Divisão',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLAudUnJeNg4trL7IcV7pN4fiIrx7SBjL8",
         materials: [
           { id: 7, type: 'reading', title: 'Entendendo a Multiplicação', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 8, type: 'video', title: 'Vídeo: Aprendendo a Multiplicar', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -56,6 +58,7 @@ const studyMaterials = {
       {
         subject: 'Ciências',
         topic: 'O Corpo Humano',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PL-8d0vXc7xnrGiKdGKlh34FiG-GKsQqy3",
         materials: [
           { id: 10, type: 'reading', title: 'Conhecendo o Corpo Humano', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 11, type: 'video', title: 'Vídeo: Os Sistemas do Corpo', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -69,6 +72,7 @@ const studyMaterials = {
       {
         subject: 'Geografia',
         topic: 'Regiões do Brasil',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLEv1VduFnHQEZ9QmPlZunUk4heuaDKbIJ",
         materials: [
           { id: 13, type: 'reading', title: 'Conhecendo as Regiões Brasileiras', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 14, type: 'video', title: 'Vídeo: As 5 Regiões do Brasil', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -82,6 +86,7 @@ const studyMaterials = {
       {
         subject: 'História',
         topic: 'Povos Indígenas do Brasil',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLBsLLHVXzuOFyt-_tmACm0vRZkzrfIPH-",
         materials: [
           { id: 16, type: 'reading', title: 'Os Primeiros Habitantes do Brasil', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 17, type: 'video', title: 'Vídeo: Povos Indígenas Brasileiros', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -97,6 +102,7 @@ const studyMaterials = {
       {
         subject: 'Matemática',
         topic: 'Geometria Analítica',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLAudUnJeNg4trL7IcV7pN4fiIrx7SBjL8",
         materials: [
           { id: 1, type: 'reading', title: 'Princípios de Geometria Analítica', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 2, type: 'video', title: 'Geometria Analítica na prática', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -108,6 +114,7 @@ const studyMaterials = {
       {
         subject: 'Física',
         topic: 'Cinemática',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PL1ELCTiItg0Nri25ONSYEjzqfQmcXFOi6",
         materials: [
           { id: 4, type: 'reading', title: 'Movimento Retilíneo Uniforme', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 5, type: 'video', title: 'Vídeo: Conceitos de Cinemática', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -121,6 +128,7 @@ const studyMaterials = {
       {
         subject: 'Química',
         topic: 'Reações Químicas',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLf1lowbdbFIAGzn9OQPD97Da9TOoZddOF",
         materials: [
           { id: 7, type: 'reading', title: 'Princípios das Reações Químicas', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 8, type: 'video', title: 'Vídeo: Balanceamento de Equações', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -134,6 +142,7 @@ const studyMaterials = {
       {
         subject: 'Biologia',
         topic: 'Genética',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PL3qONjKuaO2QWcMF1vivaYRg6O-P0GA4Y",
         materials: [
           { id: 10, type: 'reading', title: 'Leis de Mendel', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 11, type: 'video', title: 'Vídeo: Genética Básica', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -149,6 +158,7 @@ const studyMaterials = {
       {
         subject: 'Cálculo',
         topic: 'Limites e Derivadas',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLAudUnJeNg4trL7IcV7pN4fiIrx7SBjL8",
         materials: [
           { id: 1, type: 'reading', title: 'Introdução ao Cálculo Diferencial', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 2, type: 'video', title: 'Vídeo: Limites e Continuidade', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -160,6 +170,7 @@ const studyMaterials = {
       {
         subject: 'Programação',
         topic: 'Algoritmos e Estruturas de Dados',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n", // Curso de Python
         materials: [
           { id: 4, type: 'reading', title: 'Algoritmos Básicos', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 5, type: 'video', title: 'Vídeo: Introdução à Programação', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -173,6 +184,7 @@ const studyMaterials = {
       {
         subject: 'Física',
         topic: 'Mecânica Quântica',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PL1ELCTiItg0Nri25ONSYEjzqfQmcXFOi6",
         materials: [
           { id: 7, type: 'reading', title: 'Introdução à Mecânica Quântica', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 8, type: 'video', title: 'Vídeo: Fundamentos da Mecânica Quântica', icon: <Video className="h-5 w-5" />, completed: false, 
@@ -186,6 +198,7 @@ const studyMaterials = {
       {
         subject: 'Engenharia',
         topic: 'Resistência dos Materiais',
+        videoUrl: "https://www.youtube.com/embed/videoseries?list=PLLPZCzxZLaIXXliHr-8c6p_xQ_mYpRRNQ",
         materials: [
           { id: 10, type: 'reading', title: 'Princípios de Resistência dos Materiais', icon: <FileText className="h-5 w-5" />, completed: false },
           { id: 11, type: 'video', title: 'Vídeo: Tensão e Deformação', icon: <Video className="h-5 w-5" />, completed: false, 
